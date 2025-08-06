@@ -1,96 +1,128 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
+/* Global settings */
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: #e0e0e0;
+  color: #000;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding-bottom: 4rem;
 }
 
-a {
+/* Navbar */
+nav {
+  font-size: 0.9rem;
+}
+
+nav button {
+  padding: 0.15rem 0.5rem;
+  border-radius: 9999px;
+}
+
+/* Boxed Borders */
+.nav-box,
+.section-box {
+  border: 2px solid black;
+  box-sizing: border-box;
+}
+
+.section-box {
+  margin-top: 2rem;
+}
+
+/* General Section Styling */
+section {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+#about,
+#contact {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+/* Landing Section */
+#landing h1 {
+  font-size: 4rem;
   font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  letter-spacing: 0.02em;
+  margin-bottom: 1rem;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+#landing p {
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+#landing button {
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  padding: 0.5rem 2rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  background-color: black;
+  color: white;
 }
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+/* About Section */
+#about h2 {
+  text-transform: lowercase;
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+  font-size: 2rem;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  margin-bottom: 2.5rem;
 }
-button:hover {
-  border-color: #646cff;
+
+#about h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  margin-bottom: 0.25rem;
 }
+
+#about p {
+  max-width: 40rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+#about .why-ai-group {
+  max-width: 40rem;
+  margin-left: auto;
+  text-align: right;
+}
+
+#about .monocyte-description {
+  margin-bottom: 3rem;
+}
+
+/* Contact Section */
+#contact h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  margin-bottom: 2.5rem;
+}
+
+#contact .contact-details {
+  max-width: 20rem;
+  border-top: 2px solid black;
+  padding-top: 1.5rem;
+  margin-top: 0;
+}
+
+#contact p {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Remove outline on focus */
 button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+a:focus {
+  outline: none;
 }
