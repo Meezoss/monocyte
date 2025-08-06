@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Monocyte - Questions</title>
+    <link rel="stylesheet" href="/src/styles/questions.css" />
+  </head>
+  <body>
+    <div class="frame">
+      
+<!-- Top Nav -->
+<div class="top-nav">
+  <div>monocyte.</div>
+  <div><a href="/index.html">home</a> 💡</div>
+</div>
+
+<!-- Divider (moved out of nav) -->
+<div class="section-divider"></div>
+
+  <!-- Main Question Section -->
+  <div class="question-box">
+    <h1>are you dizzy?</h1>
+    <div class="button-group">
+      <button onclick="handleAnswer('no')">no</button>
+      <button onclick="handleAnswer('yes')">yes</button>
+    </div>
+  </div>
+
+  <!-- Answer Note + Divider -->
+  <div class="answers-section">
+    <p>All your answers will be stored here:</p>
+    <div id="answer-log"></div>
+  </div>
+
+  <!-- Divider Below Answers -->
+  <div class="section-divider"></div>
+
+  <!-- Footer Icon (optional) -->
+  <!-- <div class="footer-icon">
+    <img src="/vite.svg" width="40" alt="icon" />
+  </div> -->
+
+    </div>
+  </body>
+</html>
