@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
 
-/* Global settings */
+/* Global Settings */
 body {
   font-family: 'DM Sans', sans-serif;
   background-color: #e0e0e0;
@@ -8,19 +8,107 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding-bottom: 4rem;
+  margin: 0;
+}
+
+/* Typography */
+h1 {
+  font-size: 4rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  letter-spacing: 0.01em;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  margin-bottom: 2rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  margin-bottom: 0.25rem;
+}
+
+/* Reusable Button */
+.button-primary {
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  padding: 0.5rem 2rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  background-color: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.button-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
 }
 
 /* Navbar */
 nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-size: 0.9rem;
+  padding: 1rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  min-width: 2rem;
+}
+
+
+nav a {
+  text-decoration: underline;
 }
 
 nav button {
-  padding: 0.15rem 0.5rem;
   border-radius: 9999px;
+  padding: 0.25rem 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Boxed Borders */
+.nav-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  padding: 1rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  border: 2px solid black;
+  box-sizing: border-box;
+}
+
+.logo {
+  font-weight: 500;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+
+/* Layout Boxes */
 .nav-box,
 .section-box {
   border: 2px solid black;
@@ -28,13 +116,18 @@ nav button {
 }
 
 .section-box {
-  margin-top: 2rem;
+  margin: 2rem auto;
+  padding: 2rem;
+  border: 2px solid black;
+  box-sizing: border-box;
+  max-width: 1200px;
+  border-radius: 6px;
+  background-color: #e0e0e0;
 }
 
-/* General Section Styling */
+/* Sections */
 section {
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding: 0 2rem;
 }
 
 #about,
@@ -51,29 +144,40 @@ section {
   margin-bottom: 1rem;
 }
 
+#landing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh; /* adjust as needed */
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.landing-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #landing p {
   font-size: 1.125rem;
   margin-bottom: 2rem;
 }
 
-#landing button {
-  border-radius: 9999px;
-  font-size: 0.875rem;
-  padding: 0.5rem 2rem;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  background-color: black;
-  color: white;
+/* About Section */
+#about {
+  padding-top: 2rem;
 }
 
-/* About Section */
 #about h2 {
   text-transform: lowercase;
-  font-weight: 500;
-  font-size: 2rem;
+  font-weight: 600;
+  font-size: 3rem; /* previously 2rem */
   text-decoration: underline;
   text-underline-offset: 6px;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  margin-top: 0;
 }
 
 #about h3 {
@@ -90,23 +194,30 @@ section {
   line-height: 1.6;
 }
 
-#about .why-ai-group {
-  max-width: 40rem;
-  margin-left: auto;
-  text-align: right;
-}
-
 #about .monocyte-description {
   margin-bottom: 3rem;
 }
 
+#about .why-ai-group {
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: 0;
+  text-align: right;
+  padding-right: 1rem;
+}
+
 /* Contact Section */
+#contact {
+  text-align: left;
+}
+
 #contact h2 {
-  font-size: 2rem;
-  font-weight: 500;
+  font-size: 3rem; /* make it bigger */
+  font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 6px;
   margin-bottom: 2.5rem;
+  text-align: center; /* center the heading */
 }
 
 #contact .contact-details {
@@ -121,8 +232,15 @@ section {
   margin-bottom: 0.5rem;
 }
 
-/* Remove outline on focus */
+#contact hr {
+  border: none;
+  border-top: 1.5px solid black;
+  margin: 1rem 0;
+}
+
+
 button:focus,
 a:focus {
-  outline: none;
+  outline: 2px dashed black;
+  outline-offset: 2px;
 }
