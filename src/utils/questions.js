@@ -1,0 +1,7 @@
+export const questions = [
+  "are you dizzy?",
+  "do you have a headache?",
+  "have you eaten today?",
+  "did you sleep well last night?",
+  "are you experiencing nausea?"
+];

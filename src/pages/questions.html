@@ -1,6 +1,7 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+  <head>    
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Monocyte - Questions</title>
@@ -56,49 +57,14 @@
     </div>
 
     <!-- Script -->
-    <script>
-      const questions = [
-        "are you dizzy?",
-        "do you have a headache?",
-        "have you eaten today?",
-        "did you sleep well last night?",
-        "are you experiencing nausea?"
-      ];
+    <script type="module">
+      import { handleAnswer, resetForm, initialize } from "../utils/logic.js";
 
-      let currentQuestionIndex = 0;
-      const questionBox = document.querySelector(".question-box h1");
-      const answerLog = document.getElementById("answer-log");
 
-      function handleAnswer(answer) {
-        const currentQuestion = questions[currentQuestionIndex];
-        logAnswer(currentQuestion, answer);
+      window.handleAnswer = handleAnswer;
+      window.resetForm = resetForm;
 
-        currentQuestionIndex++;
-
-        if (currentQuestionIndex < questions.length) {
-          questionBox.textContent = questions[currentQuestionIndex];
-        } else {
-          questionBox.textContent = "All done. Your answers have been logged.";
-          document.querySelector(".button-group").style.display = "none";
-        }
-      }
-
-      function logAnswer(question, answer) {
-        const entry = document.createElement("div");
-        entry.textContent = `Q: ${question} → A: ${answer}`;
-        answerLog.appendChild(entry);
-      }
-
-      function resetForm() {
-        currentQuestionIndex = 0;
-        questionBox.textContent = questions[currentQuestionIndex];
-        answerLog.innerHTML = "";
-        document.querySelector(".button-group").style.display = "flex";
-        questionBox.scrollIntoView({ behavior: "smooth" });
-      }
-
-      // Load first question
-      questionBox.textContent = questions[currentQuestionIndex];
+      initialize();
     </script>
   </body>
 </html>
