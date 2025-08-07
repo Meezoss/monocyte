@@ -6,41 +6,99 @@
     <title>Monocyte - Questions</title>
     <link rel="stylesheet" href="/src/styles/questions.css" />
   </head>
-  <body>
-    <div class="frame">
+  <body class="bg-gray-200 text-black min-h-screen flex justify-center">
+    <div class="frame w-full max-w-[900px] border-2 border-black flex flex-col min-h-screen">
       
-<!-- Top Nav -->
-<div class="top-nav">
-  <div>monocyte.</div>
-  <div><a href="/index.html">home</a> 💡</div>
-</div>
+      <!-- Top Nav -->
+      <div class="top-nav flex justify-between items-center font-medium px-4 py-2 text-base">
+        <div>monocyte.</div>
+        <div><a href="/index.html">home</a> 💡</div>
+      </div>
 
-<!-- Divider (moved out of nav) -->
-<div class="section-divider"></div>
+      <!-- Divider -->
+      <div class="section-divider w-full h-[2px] bg-black"></div>
 
-  <!-- Main Question Section -->
-  <div class="question-box">
-    <h1>are you dizzy?</h1>
-    <div class="button-group">
-      <button onclick="handleAnswer('no')">no</button>
-      <button onclick="handleAnswer('yes')">yes</button>
+      <!-- Main Question Section -->
+      <div class="question-box text-center px-4 sm:px-8 pt-24 pb-8">
+        <h1 class="text-2xl sm:text-3xl md:text-4xl font-medium"></h1>
+        <div class="button-group flex justify-center gap-6 mt-8">
+          <button onclick="handleAnswer('no')" class="bg-black text-white px-6 py-2 text-sm sm:text-base rounded-full hover:bg-gray-800 transition">no</button>
+          <button onclick="handleAnswer('yes')" class="bg-black text-white px-6 py-2 text-sm sm:text-base rounded-full hover:bg-gray-800 transition">yes</button>
+        </div>
+
+        <!-- Reset Button -->
+        <div class="reset-button-container mt-8">
+          <button onclick="resetForm()" class="bg-white border border-black px-4 py-2 rounded-full hover:bg-gray-100 transition">
+            reset
+          </button>
+        </div>
+      </div>
+
+      <!-- Answer Section -->
+      <div class="answers-section px-4 pb-4 text-sm sm:text-base">
+        <p class="font-medium">All your answers will be stored here:</p>
+        <div id="answer-log" class="mt-2 space-y-1"></div>
+      </div>
+
+      <!-- AI Feedback Placeholder -->
+      <div id="ai-feedback" class="mt-6 px-4 pb-8 text-center text-gray-600 italic text-sm">
+        🧠 AI feedback summary will appear here soon.
+      </div>
+
+      <!-- Divider -->
+      <div class="section-divider w-full h-[2px] bg-black"></div>
+
+      <!-- Optional Footer -->
+      <!-- <div class="footer-icon flex justify-center py-4">
+        <img src="/vite.svg" width="40" alt="icon" />
+      </div> -->
+
     </div>
-  </div>
 
-  <!-- Answer Note + Divider -->
-  <div class="answers-section">
-    <p>All your answers will be stored here:</p>
-    <div id="answer-log"></div>
-  </div>
+    <!-- Script -->
+    <script>
+      const questions = [
+        "are you dizzy?",
+        "do you have a headache?",
+        "have you eaten today?",
+        "did you sleep well last night?",
+        "are you experiencing nausea?"
+      ];
 
-  <!-- Divider Below Answers -->
-  <div class="section-divider"></div>
+      let currentQuestionIndex = 0;
+      const questionBox = document.querySelector(".question-box h1");
+      const answerLog = document.getElementById("answer-log");
 
-  <!-- Footer Icon (optional) -->
-  <!-- <div class="footer-icon">
-    <img src="/vite.svg" width="40" alt="icon" />
-  </div> -->
+      function handleAnswer(answer) {
+        const currentQuestion = questions[currentQuestionIndex];
+        logAnswer(currentQuestion, answer);
 
-    </div>
+        currentQuestionIndex++;
+
+        if (currentQuestionIndex < questions.length) {
+          questionBox.textContent = questions[currentQuestionIndex];
+        } else {
+          questionBox.textContent = "All done. Your answers have been logged.";
+          document.querySelector(".button-group").style.display = "none";
+        }
+      }
+
+      function logAnswer(question, answer) {
+        const entry = document.createElement("div");
+        entry.textContent = `Q: ${question} → A: ${answer}`;
+        answerLog.appendChild(entry);
+      }
+
+      function resetForm() {
+        currentQuestionIndex = 0;
+        questionBox.textContent = questions[currentQuestionIndex];
+        answerLog.innerHTML = "";
+        document.querySelector(".button-group").style.display = "flex";
+        questionBox.scrollIntoView({ behavior: "smooth" });
+      }
+
+      // Load first question
+      questionBox.textContent = questions[currentQuestionIndex];
+    </script>
   </body>
 </html>

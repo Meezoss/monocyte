@@ -18,6 +18,7 @@ body {
   padding: 0;
 }
 
+/* Frame Wrapper */
 .frame {
   width: 100%;
   max-width: 900px;
@@ -49,34 +50,82 @@ body {
 .question-box {
   flex-grow: 1;
   text-align: center;
-  padding: 6rem 1rem 2rem; /* was 4rem, now 6rem top padding */
+  padding: 3rem 1rem 2rem;
+}
+
+@media (min-width: 640px) {
+  .question-box {
+    padding: 5rem 2rem 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .question-box {
+    padding: 6rem 3rem 2rem;
+  }
 }
 
 .question-box h1 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 500;
 }
 
+@media (min-width: 640px) {
+  .question-box h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .question-box h1 {
+    font-size: 3rem;
+  }
+}
+
+/* Button Group */
 .button-group {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
   margin-top: 2rem;
 }
 
 .button-group button {
   background-color: #1c1c1c;
   color: #fff;
-  padding: 0.75rem 2rem;
+  padding: 0.6rem 1rem;
+  width: 100px;
   border: none;
   border-radius: 2rem;
-  font-size: 1rem;
+  font-size: 0.95rem;
   cursor: pointer;
   transition: background 0.2s ease;
 }
 
 .button-group button:hover {
   background-color: #333;
+}
+
+@media (min-width: 640px) {
+  .button-group button {
+    width: 140px;
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+/* Reset Button */
+.reset-button-container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 480px) {
+  .reset-button-container {
+    margin-top: 1.5rem;
+  }
 }
 
 /* Answer Section */
@@ -88,6 +137,22 @@ body {
 
 #answer-log {
   margin-top: 0.5rem;
+}
+
+#answer-log > div {
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+/* AI Feedback Section */
+#ai-feedback {
+  padding-bottom: 2rem;
+  font-style: italic;
+  font-size: 0.875rem;
+  text-align: center;
+  color: #4b5563; /* tailwind gray-600 */
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 /* Footer Icon (Currently hidden or reserved for later) */
