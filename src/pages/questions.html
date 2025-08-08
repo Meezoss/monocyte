@@ -35,6 +35,11 @@
         </div>
       </div>
 
+      <button onclick="generateFeedback()" class="bg-black text-white px-4 py-2 rounded-full">
+  generate summary
+</button>
+
+
       <!-- Answer Section -->
       <div class="answers-section px-4 pb-4 text-sm sm:text-base">
         <p class="font-medium">All your answers will be stored here:</p>
@@ -58,13 +63,11 @@
 
     <!-- Script -->
     <script type="module">
-      import { handleAnswer, resetForm, initialize } from "../utils/logic.js";
-
-
-      window.handleAnswer = handleAnswer;
-      window.resetForm = resetForm;
-
-      initialize();
+    import { handleAnswer, resetForm, initialize, generateFeedback } from "../utils/logic.js";
+    window.handleAnswer = handleAnswer;
+    window.resetForm = resetForm;
+    window.generateFeedback = generateFeedback;
+    initialize();
     </script>
   </body>
 </html>

@@ -11,20 +11,20 @@ const questionBox  = document.querySelector(".question-box h1");
 const answerLog    = document.getElementById("answer-log");
 const buttonGroup  = document.querySelector(".button-group");
 
-export function initialize() {
-  // Restore any saved answers to the UI
+export async function initialize() {
+  const res = await fetch("../utils/questions.json");
+  questions = await res.json();
+
   if (answers.length) {
     answers.forEach(({ q, a }) => appendLog(q, a));
   }
-
-  // If already completed, show final state
   if (currentQuestionIndex >= questions.length) {
     finishFlow();
     return;
   }
-
   questionBox.textContent = questions[currentQuestionIndex];
 }
+
 
 export function handleAnswer(answer) {
   const q = questions[currentQuestionIndex];
@@ -67,4 +67,27 @@ function appendLog(question, answer) {
 function finishFlow() {
   questionBox.textContent = "All done. Your answers have been logged.";
   buttonGroup.style.display = "none";
+}
+
+export async function generateFeedback() {
+  const aiBox = document.getElementById("ai-feedback");
+  aiBox.textContent = "Generating summary…";
+
+  try {
+    const r = await fetch("/api/feedback", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ answers })
+    });
+    const data = await r.json();
+    if (r.ok) {
+      aiBox.textContent = data.summary;
+    } else {
+      aiBox.textContent = "Error generating feedback.";
+      console.error(data);
+    }
+  } catch (err) {
+    aiBox.textContent = "Network error.";
+    console.error(err);
+  }
 }

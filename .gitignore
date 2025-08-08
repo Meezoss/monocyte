@@ -27,3 +27,7 @@ node_modules/
 dist/
 .env 
 .DS_Store
+.vercel
+# env
+.env
+.env.* 
