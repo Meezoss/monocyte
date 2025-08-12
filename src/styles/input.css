@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* bring in your custom files */
+@import "../style.css";          
+@import "../styles/questions.css";
